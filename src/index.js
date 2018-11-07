@@ -93,12 +93,12 @@ export class Carousel extends React.Component {
         let { slideCurrent } = this.state;
         if (slideCurrent > selectedIndex) {
             while (slideCurrent !== selectedIndex) {
-                setTimeout(() => this.slideLeft(), 500);
+                setTimeout(() => this.slideLeft(), 250);
                 slideCurrent--;
             }
         } else if (slideCurrent < selectedIndex) {
             while (slideCurrent !== selectedIndex) {
-                setTimeout(() => this.slideRight(), 500);
+                setTimeout(() => this.slideRight(), 250);
                 slideCurrent++;
             }
         }

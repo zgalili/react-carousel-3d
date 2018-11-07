@@ -788,14 +788,14 @@ var Carousel = exports.Carousel = function (_React$Component) {
                 while (slideCurrent !== selectedIndex) {
                     setTimeout(function () {
                         return _this4.slideLeft();
-                    }, 500);
+                    }, 250);
                     slideCurrent--;
                 }
             } else if (slideCurrent < selectedIndex) {
                 while (slideCurrent !== selectedIndex) {
                     setTimeout(function () {
                         return _this4.slideRight();
-                    }, 500);
+                    }, 250);
                     slideCurrent++;
                 }
             }
