@@ -780,16 +780,22 @@ var Carousel = exports.Carousel = function (_React$Component) {
     }, {
         key: 'slideToSelected',
         value: function slideToSelected(selectedIndex) {
+            var _this4 = this;
+
             var slideCurrent = this.state.slideCurrent;
 
             if (slideCurrent > selectedIndex) {
                 while (slideCurrent !== selectedIndex) {
-                    this.slideLeft();
+                    setTimeout(function () {
+                        return _this4.slideLeft();
+                    }, 500);
                     slideCurrent--;
                 }
             } else if (slideCurrent < selectedIndex) {
                 while (slideCurrent !== selectedIndex) {
-                    this.slideRight();
+                    setTimeout(function () {
+                        return _this4.slideRight();
+                    }, 500);
                     slideCurrent++;
                 }
             }
@@ -797,7 +803,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
     }, {
         key: 'slideRight',
         value: function slideRight() {
-            var _this4 = this;
+            var _this5 = this;
 
             var _state2 = this.state,
                 slideCurrent = _state2.slideCurrent,
@@ -841,7 +847,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
             if (document.getElementsByClassName("slider-single active").length > 0) {
                 setTimeout(function () {
                     var height = document.getElementsByClassName("slider-single active")[0].clientHeight;
-                    _this4.setState(function (prevState, props) {
+                    _this5.setState(function (prevState, props) {
                         return { height: height + "px" };
                     });
                 }, 500);
@@ -850,7 +856,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
     }, {
         key: 'slideLeft',
         value: function slideLeft() {
-            var _this5 = this;
+            var _this6 = this;
 
             var _state3 = this.state,
                 slideCurrent = _state3.slideCurrent,
@@ -893,7 +899,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
             if (document.getElementsByClassName("slider-single active").length > 0) {
                 setTimeout(function () {
                     var height = document.getElementsByClassName("slider-single active")[0].clientHeight;
-                    _this5.setState(function (prevState, props) {
+                    _this6.setState(function (prevState, props) {
                         return { height: height + "px" };
                     });
                 }, 500);
@@ -902,7 +908,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this6 = this;
+            var _this7 = this;
 
             return _react2.default.createElement(
                 'div',
@@ -925,7 +931,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
                                         { className: slider.class, key: index },
                                         _react2.default.createElement(
                                             'div',
-                                            { className: 'slider-left', onClick: _this6.slideLeft.bind(_this6) },
+                                            { className: 'slider-left', onClick: _this7.slideLeft.bind(_this7) },
                                             _react2.default.createElement(
                                                 'div',
                                                 null,
@@ -934,7 +940,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
                                         ),
                                         _react2.default.createElement(
                                             'div',
-                                            { className: 'slider-right', onClick: _this6.slideRight.bind(_this6) },
+                                            { className: 'slider-right', onClick: _this7.slideRight.bind(_this7) },
                                             _react2.default.createElement(
                                                 'div',
                                                 null,
@@ -959,11 +965,11 @@ var Carousel = exports.Carousel = function (_React$Component) {
                         var Icon = _ref3.Icon;
                         return _react2.default.createElement(
                             'li',
-                            { className: 'header-graphs-dot ' + (_this6.state.slideCurrent === index ? 'active' : ''), key: index },
+                            { className: 'header-graphs-dot ' + (_this7.state.slideCurrent === index ? 'active' : ''), key: index },
                             _react2.default.createElement(
                                 'button',
                                 { className: 'graphs-dot-link', onClick: function onClick() {
-                                        return _this6.slideToSelected(index);
+                                        return _this7.slideToSelected(index);
                                     } },
                                 Icon ? _react2.default.createElement(Icon, null) : null
                             )
