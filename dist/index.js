@@ -684,7 +684,6 @@ var Carousel = exports.Carousel = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, props));
 
-        window.s = _this;
         _this.state = {
             slideTotal: 0,
             slideCurrent: -1,
@@ -775,6 +774,21 @@ var Carousel = exports.Carousel = function (_React$Component) {
                             };
                         });
                     }, 500);
+                }
+            }
+        }
+    }, {
+        key: 'slideToSelected',
+        value: function slideToSelected(selectedIndex) {
+            var slideCurrent = this.state.slideCurrent;
+
+            if (slideCurrent > selectedIndex) {
+                while (slideCurrent !== selectedIndex) {
+                    this.slideLeft();
+                }
+            } else if (slideCurrent < selectedIndex) {
+                while (slideCurrent !== selectedIndex) {
+                    this.slideRight();
                 }
             }
         }
@@ -947,7 +961,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
                             _react2.default.createElement(
                                 'button',
                                 { className: 'graphs-dot-link', onClick: function onClick() {
-                                        return _this6.setState({ slideCurrent: index });
+                                        return _this6.slideToSelected(index);
                                     } },
                                 Icon ? _react2.default.createElement(Icon, null) : null
                             )
