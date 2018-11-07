@@ -782,7 +782,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
                             class: "slider-single proactivede",
                             element: slid
                         };
-                        slid.push(slideobject);
+                        slide.push(slideobject);
                     });
                     setTimeout(function () {
                         var _state = _this3.state,

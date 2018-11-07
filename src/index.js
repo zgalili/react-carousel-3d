@@ -48,7 +48,7 @@ export class Carousel extends React.Component {
                         class: "slider-single proactivede",
                         element: slid
                     }
-                    slid.push(slideobject);
+                    slide.push(slideobject);
                 });
                 setTimeout(() => {
                     let {
