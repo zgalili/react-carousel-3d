@@ -7,7 +7,7 @@
 		exports["Carousal"] = factory(require("react"));
 	else
 		root["Carousal"] = factory(root["React"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_8__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_9__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -482,11 +482,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(15)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(16)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(14)();
+  module.exports = __webpack_require__(15)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -590,7 +590,7 @@ module.exports = function exportedEqual(a, b) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(10);
+var content = __webpack_require__(11);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -604,7 +604,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(16)(content, options);
+var update = __webpack_require__(17)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -637,12 +637,61 @@ if(false) {
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
+/* WEBPACK VAR INJECTION */(function(process) {/* 
+(The MIT License)
+Copyright (c) 2014 Halász Ádám <mail@adamhalasz.com>
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+//  Unique Hexatridecimal ID Generator
+// ================================================
+
+//  Dependencies
+// ================================================
+var pid = process && process.pid ? process.pid.toString(36) : '' ;
+var address = '';
+if(false){
+    var mac = '', networkInterfaces = require('os').networkInterfaces();
+    for(interface_key in networkInterfaces){
+        const networkInterface = networkInterfaces[interface_key];
+        const length = networkInterface.length;
+        for(var i = 0; i < length; i++){
+            if(networkInterface[i].mac && networkInterface[i].mac != '00:00:00:00:00:00'){
+                mac = networkInterface[i].mac; break;
+            }
+        }
+    }
+    address = mac ? parseInt(mac.replace(/\:|\D+/gi, '')).toString(36) : '' ;
+} 
+
+//  Exports
+// ================================================
+module.exports = module.exports.default = function(prefix){ return (prefix || '') + address + pid + now().toString(36); }
+module.exports.process = function(prefix){ return (prefix || '') + pid + now().toString(36); }
+module.exports.time    = function(prefix){ return (prefix || '') + now().toString(36); }
+
+//  Helpers
+// ================================================
+function now(){
+    var time = Date.now();
+    var last = now.last || time;
+    return now.last = time > last ? time : last + 1;
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -653,17 +702,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Carousel = undefined;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _uniqid = __webpack_require__(8);
+
+var _uniqid2 = _interopRequireDefault(_uniqid);
 
 __webpack_require__(7);
 
@@ -708,8 +759,10 @@ var Carousel = exports.Carousel = function (_React$Component) {
                 slides.push(slideobject);
             });
             this.setState(function (prevState, props) {
-                return { slides: slides,
-                    slideTotal: _this2.props.slides.length - 1 };
+                return {
+                    slides: slides,
+                    slideTotal: _this2.props.slides.length - 1
+                };
             });
             if (this.state.slideCurrent === -1) setTimeout(function () {
                 _this2.slideRight();
@@ -723,26 +776,49 @@ var Carousel = exports.Carousel = function (_React$Component) {
 
             if (prevProps.slides && prevProps.slides[0] && this.props.slides[0]) {
                 if (!isEqual(prevProps.slides[0], this.props.slides[0])) {
-                    var slides = [];
-                    this.props.slides.forEach(function (slide) {
+                    var slide = [];
+                    this.props.slides.forEach(function (slid) {
                         var slideobject = {
                             class: "slider-single proactivede",
-                            element: slide
+                            element: slid
                         };
-                        slides.push(slideobject);
-                    });
-                    this.setState(function (prevState, props) {
-                        return {
-                            slides: slides,
-                            slideTotal: _this3.props.slides.length - 1,
-                            slideCurrent: -1 };
-                    });
-                    this.setState(function (prevState, props) {
-                        return _extends({}, prevState);
+                        slid.push(slideobject);
                     });
                     setTimeout(function () {
-                        _this3.slideRight();
-                        height: document.getElementsByClassName("slider-single")[0].clientHeight;
+                        var _state = _this3.state,
+                            slideCurrent = _state.slideCurrent,
+                            slideTotal = _state.slideTotal;
+
+                        var preactiveSlide = void 0,
+                            proactiveSlide = void 0;
+                        if (slideCurrent > 0) {
+                            preactiveSlide = slide[slideCurrent - 1];
+                        } else {
+                            preactiveSlide = slide[slideTotal];
+                        }
+                        var activeSlide = slide[slideCurrent];
+                        if (slideCurrent < slideTotal) {
+                            proactiveSlide = slide[slideCurrent + 1];
+                        } else {
+                            proactiveSlide = slide[0];
+                        }
+                        slide.forEach(function (slid, index) {
+                            if (slid.class.includes("preactivede")) {
+                                slid.class = 'slider-single proactivede';
+                            }
+                            if (slid.class.includes("preactive")) {
+                                slid.class = 'slider-single preactivede';
+                            }
+                        });
+                        preactiveSlide.class = 'slider-single preactive';
+                        activeSlide.class = 'slider-single active';
+                        proactiveSlide.class = 'slider-single proactive';
+                        _this3.setState(function (prevState, props) {
+                            return {
+                                slides: slide,
+                                slideTotal: slide.length - 1
+                            };
+                        });
                     }, 500);
                 }
             }
@@ -752,9 +828,9 @@ var Carousel = exports.Carousel = function (_React$Component) {
         value: function slideRight() {
             var _this4 = this;
 
-            var _state = this.state,
-                slideCurrent = _state.slideCurrent,
-                slideTotal = _state.slideTotal;
+            var _state2 = this.state,
+                slideCurrent = _state2.slideCurrent,
+                slideTotal = _state2.slideTotal;
 
             var preactiveSlide = void 0,
                 proactiveSlide = void 0;
@@ -805,9 +881,9 @@ var Carousel = exports.Carousel = function (_React$Component) {
         value: function slideLeft() {
             var _this5 = this;
 
-            var _state2 = this.state,
-                slideCurrent = _state2.slideCurrent,
-                slideTotal = _state2.slideTotal;
+            var _state3 = this.state,
+                slideCurrent = _state3.slideCurrent,
+                slideTotal = _state3.slideTotal;
 
             var preactiveSlide = void 0,
                 proactiveSlide = void 0;
@@ -909,10 +985,10 @@ Carousel.propTypes = {
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(11)(false);
+exports = module.exports = __webpack_require__(12)(false);
 // imports
 
 
@@ -923,7 +999,7 @@ exports.push([module.i, "@keyframes heartbeat {\n  0% {\n    transform: scale(0)
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 /*
@@ -1005,7 +1081,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1102,7 +1178,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1169,7 +1245,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1234,7 +1310,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1250,10 +1326,10 @@ module.exports = function() {
 var emptyFunction = __webpack_require__(1);
 var invariant = __webpack_require__(2);
 var warning = __webpack_require__(4);
-var assign = __webpack_require__(12);
+var assign = __webpack_require__(13);
 
 var ReactPropTypesSecret = __webpack_require__(3);
-var checkPropTypes = __webpack_require__(13);
+var checkPropTypes = __webpack_require__(14);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -1784,7 +1860,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -1850,7 +1926,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(17);
+var	fixUrls = __webpack_require__(18);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2166,7 +2242,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 
