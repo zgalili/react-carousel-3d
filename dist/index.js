@@ -7,7 +7,7 @@
 		exports["Carousal"] = factory(require("react"));
 	else
 		root["Carousal"] = factory(root["React"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_8__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_9__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -482,11 +482,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(15)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(16)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(14)();
+  module.exports = __webpack_require__(15)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -590,7 +590,7 @@ module.exports = function exportedEqual(a, b) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(10);
+var content = __webpack_require__(11);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -604,7 +604,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(16)(content, options);
+var update = __webpack_require__(17)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -636,13 +636,14 @@ if(false) {
 }
 
 /***/ }),
-/* 8 */
+/* 8 */,
+/* 9 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -653,11 +654,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Carousel = undefined;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -689,6 +688,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
             slideTotal: 0,
             slideCurrent: -1,
             slides: [],
+            icons: [],
             height: "0px"
         };
         return _this;
@@ -700,7 +700,10 @@ var Carousel = exports.Carousel = function (_React$Component) {
             var _this2 = this;
 
             var slides = [];
-            this.props.slides.forEach(function (slide) {
+            this.props.slides.forEach(function (_ref) {
+                var slide = _ref.slide,
+                    icons = _ref.icons;
+
                 var slideobject = {
                     class: "slider-single proactivede",
                     element: slide
@@ -708,8 +711,10 @@ var Carousel = exports.Carousel = function (_React$Component) {
                 slides.push(slideobject);
             });
             this.setState(function (prevState, props) {
-                return { slides: slides,
-                    slideTotal: _this2.props.slides.length - 1 };
+                return {
+                    slides: slides,
+                    slideTotal: _this2.props.slides.length - 1
+                };
             });
             if (this.state.slideCurrent === -1) setTimeout(function () {
                 _this2.slideRight();
@@ -723,38 +728,86 @@ var Carousel = exports.Carousel = function (_React$Component) {
 
             if (prevProps.slides && prevProps.slides[0] && this.props.slides[0]) {
                 if (!isEqual(prevProps.slides[0], this.props.slides[0])) {
-                    var slides = [];
-                    this.props.slides.forEach(function (slide) {
+                    var slide = [];
+                    this.props.slides.forEach(function (_ref2) {
+                        var slid = _ref2.slide;
+
                         var slideobject = {
                             class: "slider-single proactivede",
-                            element: slide
+                            element: slid
                         };
-                        slides.push(slideobject);
-                    });
-                    this.setState(function (prevState, props) {
-                        return {
-                            slides: slides,
-                            slideTotal: _this3.props.slides.length - 1,
-                            slideCurrent: -1 };
-                    });
-                    this.setState(function (prevState, props) {
-                        return _extends({}, prevState);
+                        slide.push(slideobject);
                     });
                     setTimeout(function () {
-                        _this3.slideRight();
-                        height: document.getElementsByClassName("slider-single")[0].clientHeight;
+                        var _state = _this3.state,
+                            slideCurrent = _state.slideCurrent,
+                            slideTotal = _state.slideTotal;
+
+                        var preactiveSlide = void 0,
+                            proactiveSlide = void 0;
+                        if (slideCurrent > 0) {
+                            preactiveSlide = slide[slideCurrent - 1];
+                        } else {
+                            preactiveSlide = slide[slideTotal];
+                        }
+                        var activeSlide = slide[slideCurrent];
+                        if (slideCurrent < slideTotal) {
+                            proactiveSlide = slide[slideCurrent + 1];
+                        } else {
+                            proactiveSlide = slide[0];
+                        }
+                        slide.forEach(function (slid, index) {
+                            if (slid.class.includes("preactivede")) {
+                                slid.class = 'slider-single proactivede';
+                            }
+                            if (slid.class.includes("preactive")) {
+                                slid.class = 'slider-single preactivede';
+                            }
+                        });
+                        preactiveSlide.class = 'slider-single preactive';
+                        activeSlide.class = 'slider-single active';
+                        proactiveSlide.class = 'slider-single proactive';
+                        _this3.setState(function (prevState, props) {
+                            return {
+                                slides: slide,
+                                slideTotal: slide.length - 1
+                            };
+                        });
                     }, 500);
+                }
+            }
+        }
+    }, {
+        key: 'slideToSelected',
+        value: function slideToSelected(selectedIndex) {
+            var _this4 = this;
+
+            var slideCurrent = this.state.slideCurrent;
+
+            if (slideCurrent > selectedIndex) {
+                while (slideCurrent !== selectedIndex) {
+                    setTimeout(function () {
+                        return _this4.slideLeft();
+                    }, 250);
+                    slideCurrent--;
+                }
+            } else if (slideCurrent < selectedIndex) {
+                while (slideCurrent !== selectedIndex) {
+                    setTimeout(function () {
+                        return _this4.slideRight();
+                    }, 250);
+                    slideCurrent++;
                 }
             }
         }
     }, {
         key: 'slideRight',
         value: function slideRight() {
-            var _this4 = this;
+            var _this5 = this;
 
-            var _state = this.state,
-                slideCurrent = _state.slideCurrent,
-                slideTotal = _state.slideTotal;
+            var _state2 = this.state,
+                slideCurrent = _state2.slideCurrent,
+                slideTotal = _state2.slideTotal;
 
             var preactiveSlide = void 0,
                 proactiveSlide = void 0;
@@ -794,7 +847,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
             if (document.getElementsByClassName("slider-single active").length > 0) {
                 setTimeout(function () {
                     var height = document.getElementsByClassName("slider-single active")[0].clientHeight;
-                    _this4.setState(function (prevState, props) {
+                    _this5.setState(function (prevState, props) {
                         return { height: height + "px" };
                     });
                 }, 500);
@@ -803,11 +856,11 @@ var Carousel = exports.Carousel = function (_React$Component) {
     }, {
         key: 'slideLeft',
         value: function slideLeft() {
-            var _this5 = this;
+            var _this6 = this;
 
-            var _state2 = this.state,
-                slideCurrent = _state2.slideCurrent,
-                slideTotal = _state2.slideTotal;
+            var _state3 = this.state,
+                slideCurrent = _state3.slideCurrent,
+                slideTotal = _state3.slideTotal;
 
             var preactiveSlide = void 0,
                 proactiveSlide = void 0;
@@ -846,7 +899,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
             if (document.getElementsByClassName("slider-single active").length > 0) {
                 setTimeout(function () {
                     var height = document.getElementsByClassName("slider-single active")[0].clientHeight;
-                    _this5.setState(function (prevState, props) {
+                    _this6.setState(function (prevState, props) {
                         return { height: height + "px" };
                     });
                 }, 500);
@@ -855,47 +908,73 @@ var Carousel = exports.Carousel = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this6 = this;
+            var _this7 = this;
 
             return _react2.default.createElement(
                 'div',
-                { className: 'react-3d-carousel', style: { height: this.state.height } },
-                this.state.slides && this.state.slides.length > 0 && _react2.default.createElement(
+                { className: 'header-main-graphs' },
+                _react2.default.createElement(
                     'div',
-                    { className: 'slider-container' },
+                    { className: 'header-graphs-row d-flex flex-nowrap align-items-center h-100' },
                     _react2.default.createElement(
                         'div',
-                        { className: 'slider-content' },
-                        this.state.slides.map(function (slider, index) {
-                            return _react2.default.createElement(
+                        { className: 'react-3d-carousel', style: { height: this.state.height } },
+                        this.state.slides && this.state.slides.length > 0 && _react2.default.createElement(
+                            'div',
+                            { className: 'slider-container' },
+                            _react2.default.createElement(
                                 'div',
-                                { className: slider.class, key: index },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'slider-left', onClick: _this6.slideLeft.bind(_this6) },
-                                    _react2.default.createElement(
+                                { className: 'slider-content' },
+                                this.state.slides.map(function (slider, index) {
+                                    return _react2.default.createElement(
                                         'div',
-                                        null,
-                                        _react2.default.createElement('i', { className: 'fa fa-arrow-left' })
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'slider-right', onClick: _this6.slideRight.bind(_this6) },
-                                    _react2.default.createElement(
-                                        'div',
-                                        null,
-                                        _react2.default.createElement('i', { className: 'fa fa-arrow-right' })
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'slider-single-content' },
-                                    slider.element
-                                )
-                            );
-                        })
+                                        { className: slider.class, key: index },
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'slider-left', onClick: _this7.slideLeft.bind(_this7) },
+                                            _react2.default.createElement(
+                                                'div',
+                                                null,
+                                                _react2.default.createElement('i', { className: 'fa fa-arrow-left' })
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'slider-right', onClick: _this7.slideRight.bind(_this7) },
+                                            _react2.default.createElement(
+                                                'div',
+                                                null,
+                                                _react2.default.createElement('i', { className: 'fa fa-arrow-right' })
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'slider-single-content' },
+                                            slider.element
+                                        )
+                                    );
+                                })
+                            )
+                        )
                     )
+                ),
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'header-graphs-dots d-flex justify-content-center flex-wrap align-items-center' },
+                    this.props.slides.map(function (_ref3, index) {
+                        var Icon = _ref3.Icon;
+                        return _react2.default.createElement(
+                            'li',
+                            { className: 'header-graphs-dot ' + (_this7.state.slideCurrent === index ? 'active' : ''), key: index },
+                            _react2.default.createElement(
+                                'button',
+                                { className: 'graphs-dot-link', onClick: function onClick() {
+                                        return _this7.slideToSelected(index);
+                                    } },
+                                Icon ? _react2.default.createElement(Icon, null) : null
+                            )
+                        );
+                    })
                 )
             );
         }
@@ -905,14 +984,14 @@ var Carousel = exports.Carousel = function (_React$Component) {
 }(_react2.default.Component);
 
 Carousel.propTypes = {
-    slides: _propTypes2.default.arrayOf(_propTypes2.default.element)
+    slides: _propTypes2.default.arrayOf(_propTypes2.default.object)
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(11)(false);
+exports = module.exports = __webpack_require__(12)(false);
 // imports
 
 
@@ -923,7 +1002,7 @@ exports.push([module.i, "@keyframes heartbeat {\n  0% {\n    transform: scale(0)
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 /*
@@ -1005,7 +1084,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1102,7 +1181,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1169,7 +1248,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1234,7 +1313,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1250,10 +1329,10 @@ module.exports = function() {
 var emptyFunction = __webpack_require__(1);
 var invariant = __webpack_require__(2);
 var warning = __webpack_require__(4);
-var assign = __webpack_require__(12);
+var assign = __webpack_require__(13);
 
 var ReactPropTypesSecret = __webpack_require__(3);
-var checkPropTypes = __webpack_require__(13);
+var checkPropTypes = __webpack_require__(14);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -1784,7 +1863,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -1850,7 +1929,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(17);
+var	fixUrls = __webpack_require__(18);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2166,7 +2245,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 
