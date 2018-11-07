@@ -636,55 +636,7 @@ if(false) {
 }
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/* 
-(The MIT License)
-Copyright (c) 2014 Halász Ádám <mail@adamhalasz.com>
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-
-//  Unique Hexatridecimal ID Generator
-// ================================================
-
-//  Dependencies
-// ================================================
-var pid = process && process.pid ? process.pid.toString(36) : '' ;
-var address = '';
-if(false){
-    var mac = '', networkInterfaces = require('os').networkInterfaces();
-    for(interface_key in networkInterfaces){
-        const networkInterface = networkInterfaces[interface_key];
-        const length = networkInterface.length;
-        for(var i = 0; i < length; i++){
-            if(networkInterface[i].mac && networkInterface[i].mac != '00:00:00:00:00:00'){
-                mac = networkInterface[i].mac; break;
-            }
-        }
-    }
-    address = mac ? parseInt(mac.replace(/\:|\D+/gi, '')).toString(36) : '' ;
-} 
-
-//  Exports
-// ================================================
-module.exports = module.exports.default = function(prefix){ return (prefix || '') + address + pid + now().toString(36); }
-module.exports.process = function(prefix){ return (prefix || '') + pid + now().toString(36); }
-module.exports.time    = function(prefix){ return (prefix || '') + now().toString(36); }
-
-//  Helpers
-// ================================================
-function now(){
-    var time = Date.now();
-    var last = now.last || time;
-    return now.last = time > last ? time : last + 1;
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
+/* 8 */,
 /* 9 */
 /***/ (function(module, exports) {
 
@@ -711,10 +663,6 @@ var _react2 = _interopRequireDefault(_react);
 var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _uniqid = __webpack_require__(8);
-
-var _uniqid2 = _interopRequireDefault(_uniqid);
 
 __webpack_require__(7);
 
@@ -941,43 +889,67 @@ var Carousel = exports.Carousel = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: 'react-3d-carousel', style: { height: this.state.height } },
-                this.state.slides && this.state.slides.length > 0 && _react2.default.createElement(
+                { className: 'header-main-graphs' },
+                _react2.default.createElement(
                     'div',
-                    { className: 'slider-container' },
+                    { className: 'header-graphs-row d-flex flex-nowrap align-items-center h-100' },
                     _react2.default.createElement(
                         'div',
-                        { className: 'slider-content' },
-                        this.state.slides.map(function (slider, index) {
-                            return _react2.default.createElement(
+                        { className: 'react-3d-carousel', style: { height: this.state.height } },
+                        this.state.slides && this.state.slides.length > 0 && _react2.default.createElement(
+                            'div',
+                            { className: 'slider-container' },
+                            _react2.default.createElement(
                                 'div',
-                                { className: slider.class, key: index },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'slider-left', onClick: _this6.slideLeft.bind(_this6) },
-                                    _react2.default.createElement(
+                                { className: 'slider-content' },
+                                this.state.slides.map(function (slider, index) {
+                                    return _react2.default.createElement(
                                         'div',
-                                        null,
-                                        _react2.default.createElement('i', { className: 'fa fa-arrow-left' })
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'slider-right', onClick: _this6.slideRight.bind(_this6) },
-                                    _react2.default.createElement(
-                                        'div',
-                                        null,
-                                        _react2.default.createElement('i', { className: 'fa fa-arrow-right' })
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'slider-single-content' },
-                                    slider.element
-                                )
-                            );
-                        })
+                                        { className: slider.class, key: index },
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'slider-left', onClick: _this6.slideLeft.bind(_this6) },
+                                            _react2.default.createElement(
+                                                'div',
+                                                null,
+                                                _react2.default.createElement('i', { className: 'fa fa-arrow-left' })
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'slider-right', onClick: _this6.slideRight.bind(_this6) },
+                                            _react2.default.createElement(
+                                                'div',
+                                                null,
+                                                _react2.default.createElement('i', { className: 'fa fa-arrow-right' })
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'slider-single-content' },
+                                            slider.element
+                                        )
+                                    );
+                                })
+                            )
+                        )
                     )
+                ),
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'header-graphs-dots d-flex justify-content-center flex-wrap align-items-center' },
+                    this.props.slides.map(function (_ref3) {
+                        var Icon = _ref3.Icon;
+                        return _react2.default.createElement(
+                            'li',
+                            { className: 'header-graphs-dot' },
+                            _react2.default.createElement(
+                                'button',
+                                { className: 'graphs-dot-link' },
+                                Icon ? _react2.default.createElement(Icon, null) : null
+                            )
+                        );
+                    })
                 )
             );
         }
@@ -987,7 +959,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
 }(_react2.default.Component);
 
 Carousel.propTypes = {
-    slides: _propTypes2.default.arrayOf(_propTypes2.default.element)
+    slides: _propTypes2.default.arrayOf(_propTypes2.default.object)
 };
 
 /***/ }),

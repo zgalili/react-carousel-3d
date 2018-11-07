@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import uniqid from 'uniqid';
 import './styles/style.scss';
 
 
@@ -20,7 +19,7 @@ export class Carousel extends React.Component {
     }
     componentDidMount() {
         let slides = [];
-        this.props.slides.forEach(({slide, icons}) => {
+        this.props.slides.forEach(({ slide, icons }) => {
             let slideobject = {
                 class: "slider-single proactivede",
                 element: slide
@@ -44,7 +43,7 @@ export class Carousel extends React.Component {
         if (prevProps.slides && prevProps.slides[0] && this.props.slides[0]) {
             if (!isEqual(prevProps.slides[0], this.props.slides[0])) {
                 let slide = [];
-                this.props.slides.forEach(({slide: slid}) => {
+                this.props.slides.forEach(({ slide: slid }) => {
                     let slideobject = {
                         class: "slider-single proactivede",
                         element: slid
@@ -184,40 +183,49 @@ export class Carousel extends React.Component {
 
     render() {
         return (
-            <div className="react-3d-carousel" style={{ height: this.state.height }}>
-                {this.state.slides && this.state.slides.length > 0 &&
-                    <div className="slider-container">
-
-                        <div className="slider-content">
-                            {this.state.slides.map((slider, index) => {
-                                return (
-                                    <div className={slider.class} key={index}>
-                                        <div className="slider-left" onClick={this.slideLeft.bind(this)}>
-                                            <div>
-                                                <i className="fa fa-arrow-left"></i>
+            <div className="header-main-graphs">
+                <div className="header-graphs-row d-flex flex-nowrap align-items-center h-100">
+                    <div className="react-3d-carousel" style={{ height: this.state.height }}>
+                        {this.state.slides && this.state.slides.length > 0 &&
+                            <div className="slider-container">
+                                <div className="slider-content">
+                                    {this.state.slides.map((slider, index) => {
+                                        return (
+                                            <div className={slider.class} key={index}>
+                                                <div className="slider-left" onClick={this.slideLeft.bind(this)}>
+                                                    <div>
+                                                        <i className="fa fa-arrow-left"></i>
+                                                    </div>
+                                                </div>
+                                                <div className="slider-right" onClick={this.slideRight.bind(this)}>
+                                                    <div >
+                                                        <i className="fa fa-arrow-right"></i>
+                                                    </div>
+                                                </div>
+                                                <div className="slider-single-content">
+                                                    {slider.element}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="slider-right" onClick={this.slideRight.bind(this)}>
-                                            <div >
-                                                <i className="fa fa-arrow-right"></i>
-                                            </div>
-                                        </div>
-
-                                        <div className="slider-single-content">
-                                            {slider.element}
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-
-
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                        }
                     </div>
-                }
+                </div>
+                <ul className="header-graphs-dots d-flex justify-content-center flex-wrap align-items-center">
+                    {this.props.slides.map((({Icon}) => (
+                        <li className="header-graphs-dot">
+                        <button className="graphs-dot-link">
+                            {Icon ? <Icon /> : null}
+                        </button>
+                    </li>
+                    )))}
+                </ul>
             </div>
         );
     }
 }
 Carousel.propTypes = {
-    slides: PropTypes.arrayOf(PropTypes.element)
+    slides: PropTypes.arrayOf(PropTypes.object)
 };
