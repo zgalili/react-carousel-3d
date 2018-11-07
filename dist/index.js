@@ -785,10 +785,12 @@ var Carousel = exports.Carousel = function (_React$Component) {
             if (slideCurrent > selectedIndex) {
                 while (slideCurrent !== selectedIndex) {
                     this.slideLeft();
+                    slideCurrent--;
                 }
             } else if (slideCurrent < selectedIndex) {
                 while (slideCurrent !== selectedIndex) {
                     this.slideRight();
+                    slideCurrent++;
                 }
             }
         }

@@ -90,14 +90,16 @@ export class Carousel extends React.Component {
     }
 
     slideToSelected(selectedIndex) {
-        const { slideCurrent } = this.state;
+        let { slideCurrent } = this.state;
         if (slideCurrent > selectedIndex) {
             while (slideCurrent !== selectedIndex) {
                 this.slideLeft();
+                slideCurrent--;
             }
         } else if (slideCurrent < selectedIndex) {
             while (slideCurrent !== selectedIndex) {
                 this.slideRight();
+                slideCurrent++;
             }
         }
     }
