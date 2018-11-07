@@ -684,6 +684,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, props));
 
+        window.s = _this;
         _this.state = {
             slideTotal: 0,
             slideCurrent: -1,
@@ -945,7 +946,9 @@ var Carousel = exports.Carousel = function (_React$Component) {
                             { className: 'header-graphs-dot ' + (_this6.state.slideCurrent === index ? 'active' : ''), key: index },
                             _react2.default.createElement(
                                 'button',
-                                { className: 'graphs-dot-link' },
+                                { className: 'graphs-dot-link', onClick: function onClick() {
+                                        return _this6.setState({ slideCurrent: index });
+                                    } },
                                 Icon ? _react2.default.createElement(Icon, null) : null
                             )
                         );

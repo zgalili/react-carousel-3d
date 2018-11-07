@@ -6,9 +6,9 @@ import './styles/style.scss';
 const isEqual = require("react-fast-compare");
 
 export class Carousel extends React.Component {
-
     constructor(props) {
         super(props)
+        window.s = this;
         this.state = {
             slideTotal: 0,
             slideCurrent: -1,
@@ -216,7 +216,7 @@ export class Carousel extends React.Component {
                 <ul className="header-graphs-dots d-flex justify-content-center flex-wrap align-items-center">
                     {this.props.slides.map((({ Icon }, index) => (
                         <li className={`header-graphs-dot ${this.state.slideCurrent === index ? 'active' : ''}`} key={index}>
-                            <button className="graphs-dot-link">
+                            <button className="graphs-dot-link" onClick={() => this.setState({ slideCurrent: index })}>
                                 {Icon ? <Icon /> : null}
                             </button>
                         </li>
