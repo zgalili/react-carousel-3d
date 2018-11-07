@@ -740,6 +740,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
             slideTotal: 0,
             slideCurrent: -1,
             slides: [],
+            icons: [],
             height: "0px"
         };
         return _this;
@@ -751,7 +752,10 @@ var Carousel = exports.Carousel = function (_React$Component) {
             var _this2 = this;
 
             var slides = [];
-            this.props.slides.forEach(function (slide) {
+            this.props.slides.forEach(function (_ref) {
+                var slide = _ref.slide,
+                    icons = _ref.icons;
+
                 var slideobject = {
                     class: "slider-single proactivede",
                     element: slide
@@ -777,7 +781,9 @@ var Carousel = exports.Carousel = function (_React$Component) {
             if (prevProps.slides && prevProps.slides[0] && this.props.slides[0]) {
                 if (!isEqual(prevProps.slides[0], this.props.slides[0])) {
                     var slide = [];
-                    this.props.slides.forEach(function (slid) {
+                    this.props.slides.forEach(function (_ref2) {
+                        var slid = _ref2.slide;
+
                         var slideobject = {
                             class: "slider-single proactivede",
                             element: slid

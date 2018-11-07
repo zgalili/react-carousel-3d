@@ -14,12 +14,13 @@ export class Carousel extends React.Component {
             slideTotal: 0,
             slideCurrent: -1,
             slides: [],
+            icons: [],
             height: "0px"
         }
     }
     componentDidMount() {
         let slides = [];
-        this.props.slides.forEach(slide => {
+        this.props.slides.forEach(({slide, icons}) => {
             let slideobject = {
                 class: "slider-single proactivede",
                 element: slide
@@ -43,7 +44,7 @@ export class Carousel extends React.Component {
         if (prevProps.slides && prevProps.slides[0] && this.props.slides[0]) {
             if (!isEqual(prevProps.slides[0], this.props.slides[0])) {
                 let slide = [];
-                this.props.slides.forEach((slid) => {
+                this.props.slides.forEach(({slide: slid}) => {
                     let slideobject = {
                         class: "slider-single proactivede",
                         element: slid
