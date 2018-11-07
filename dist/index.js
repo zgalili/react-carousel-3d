@@ -938,11 +938,11 @@ var Carousel = exports.Carousel = function (_React$Component) {
                 _react2.default.createElement(
                     'ul',
                     { className: 'header-graphs-dots d-flex justify-content-center flex-wrap align-items-center' },
-                    this.props.slides.map(function (_ref3) {
+                    this.props.slides.map(function (_ref3, index) {
                         var Icon = _ref3.Icon;
                         return _react2.default.createElement(
                             'li',
-                            { className: 'header-graphs-dot' },
+                            { className: 'header-graphs-dot ' + (_this6.state.slideCurrent === index ? 'active' : ''), key: index },
                             _react2.default.createElement(
                                 'button',
                                 { className: 'graphs-dot-link' },

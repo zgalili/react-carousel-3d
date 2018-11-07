@@ -214,12 +214,12 @@ export class Carousel extends React.Component {
                     </div>
                 </div>
                 <ul className="header-graphs-dots d-flex justify-content-center flex-wrap align-items-center">
-                    {this.props.slides.map((({Icon}) => (
-                        <li className="header-graphs-dot">
-                        <button className="graphs-dot-link">
-                            {Icon ? <Icon /> : null}
-                        </button>
-                    </li>
+                    {this.props.slides.map((({ Icon }, index) => (
+                        <li className={`header-graphs-dot ${this.state.slideCurrent === index ? 'active' : ''}`} key={index}>
+                            <button className="graphs-dot-link">
+                                {Icon ? <Icon /> : null}
+                            </button>
+                        </li>
                     )))}
                 </ul>
             </div>
