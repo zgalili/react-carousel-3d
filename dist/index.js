@@ -7,7 +7,7 @@
 		exports["Carousal"] = factory(require("react"));
 	else
 		root["Carousal"] = factory(root["React"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_9__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_5__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -391,6 +391,47 @@ module.exports = ReactPropTypesSecret;
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(16)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(15)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -457,42 +498,44 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(17)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('./react-swipe'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod.exports, global.reactSwipe);
+    global.index = mod.exports;
+  }
+})(this, function (exports, _reactSwipe) {
+  'use strict';
 
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
+  var _reactSwipe2 = _interopRequireDefault(_reactSwipe);
 
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(16)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(15)();
-}
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+  exports.default = _reactSwipe2.default;
+});
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -586,7 +629,7 @@ module.exports = function exportedEqual(a, b) {
 
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -604,7 +647,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(17)(content, options);
+var update = __webpack_require__(18)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -636,13 +679,6 @@ if(false) {
 }
 
 /***/ }),
-/* 8 */,
-/* 9 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
-
-/***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -656,15 +692,19 @@ exports.Carousel = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _reactEasySwipe = __webpack_require__(7);
+
+var _reactEasySwipe2 = _interopRequireDefault(_reactEasySwipe);
+
+var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-__webpack_require__(7);
+__webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -674,7 +714,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var isEqual = __webpack_require__(6);
+var isEqual = __webpack_require__(8);
 
 var Carousel = exports.Carousel = function (_React$Component) {
     _inherits(Carousel, _React$Component);
@@ -917,43 +957,51 @@ var Carousel = exports.Carousel = function (_React$Component) {
                     'div',
                     { className: 'header-graphs-row d-flex flex-nowrap align-items-center h-100' },
                     _react2.default.createElement(
-                        'div',
-                        { className: 'react-3d-carousel', style: { height: this.state.height } },
-                        this.state.slides && this.state.slides.length > 0 && _react2.default.createElement(
+                        _reactEasySwipe2.default,
+                        { onSwipeLeft: function onSwipeLeft() {
+                                return _this7.slideRight();
+                            }, onSwipeRight: function onSwipeRight() {
+                                return _this7.slideLeft();
+                            } },
+                        _react2.default.createElement(
                             'div',
-                            { className: 'slider-container' },
-                            _react2.default.createElement(
+                            { className: 'react-3d-carousel', style: { height: this.state.height } },
+                            this.state.slides && this.state.slides.length > 0 && _react2.default.createElement(
                                 'div',
-                                { className: 'slider-content' },
-                                this.state.slides.map(function (slider, index) {
-                                    return _react2.default.createElement(
-                                        'div',
-                                        { className: slider.class, key: index },
-                                        _react2.default.createElement(
+                                { className: 'slider-container' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'slider-content' },
+                                    this.state.slides.map(function (slider, index) {
+                                        return _react2.default.createElement(
                                             'div',
-                                            { className: 'slider-left', onClick: _this7.slideLeft.bind(_this7) },
+                                            { className: slider.class, key: index },
                                             _react2.default.createElement(
                                                 'div',
-                                                null,
-                                                _react2.default.createElement('i', { className: 'fa fa-arrow-left' })
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'slider-right', onClick: _this7.slideRight.bind(_this7) },
+                                                { className: 'slider-left', onClick: _this7.slideLeft.bind(_this7) },
+                                                _react2.default.createElement(
+                                                    'div',
+                                                    null,
+                                                    _react2.default.createElement('i', { className: 'fa fa-arrow-left' })
+                                                )
+                                            ),
                                             _react2.default.createElement(
                                                 'div',
-                                                null,
-                                                _react2.default.createElement('i', { className: 'fa fa-arrow-right' })
+                                                { className: 'slider-right', onClick: _this7.slideRight.bind(_this7) },
+                                                _react2.default.createElement(
+                                                    'div',
+                                                    null,
+                                                    _react2.default.createElement('i', { className: 'fa fa-arrow-right' })
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                'div',
+                                                { className: 'slider-single-content' },
+                                                slider.element
                                             )
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'slider-single-content' },
-                                            slider.element
-                                        )
-                                    );
-                                })
+                                        );
+                                    })
+                                )
                             )
                         )
                     )
@@ -1196,7 +1244,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(2);
-  var warning = __webpack_require__(4);
+  var warning = __webpack_require__(6);
   var ReactPropTypesSecret = __webpack_require__(3);
   var loggedTypeFailures = {};
 }
@@ -1328,7 +1376,7 @@ module.exports = function() {
 
 var emptyFunction = __webpack_require__(1);
 var invariant = __webpack_require__(2);
-var warning = __webpack_require__(4);
+var warning = __webpack_require__(6);
 var assign = __webpack_require__(13);
 
 var ReactPropTypesSecret = __webpack_require__(3);
@@ -1866,6 +1914,366 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(5), __webpack_require__(4)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('react'), require('prop-types'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod.exports, global.react, global.propTypes);
+    global.reactSwipe = mod.exports;
+  }
+})(this, function (exports, _react, _propTypes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.setHasSupportToCaptureOption = setHasSupportToCaptureOption;
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _propTypes2 = _interopRequireDefault(_propTypes);
+
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
+
+  var _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  function _objectWithoutProperties(obj, keys) {
+    var target = {};
+
+    for (var i in obj) {
+      if (keys.indexOf(i) >= 0) continue;
+      if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+      target[i] = obj[i];
+    }
+
+    return target;
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
+
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+      constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
+
+  var supportsCaptureOption = false;
+  function setHasSupportToCaptureOption(hasSupport) {
+    supportsCaptureOption = hasSupport;
+  }
+
+  try {
+    addEventListener("test", null, Object.defineProperty({}, 'capture', { get: function get() {
+        setHasSupportToCaptureOption(true);
+      } }));
+  } catch (e) {}
+
+  function getSafeEventHandlerOpts() {
+    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { capture: true };
+
+    return supportsCaptureOption ? options : options.capture;
+  }
+
+  /**
+   * [getPosition returns a position element that works for mouse or touch events]
+   * @param  {[Event]} event [the received event]
+   * @return {[Object]}      [x and y coords]
+   */
+  function getPosition(event) {
+    if ('touches' in event) {
+      var _event$touches$ = event.touches[0],
+          pageX = _event$touches$.pageX,
+          pageY = _event$touches$.pageY;
+
+      return { x: pageX, y: pageY };
+    }
+
+    var screenX = event.screenX,
+        screenY = event.screenY;
+
+    return { x: screenX, y: screenY };
+  }
+
+  var ReactSwipe = function (_Component) {
+    _inherits(ReactSwipe, _Component);
+
+    function ReactSwipe() {
+      var _ref;
+
+      _classCallCheck(this, ReactSwipe);
+
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      var _this = _possibleConstructorReturn(this, (_ref = ReactSwipe.__proto__ || Object.getPrototypeOf(ReactSwipe)).call.apply(_ref, [this].concat(args)));
+
+      _this._handleSwipeStart = _this._handleSwipeStart.bind(_this);
+      _this._handleSwipeMove = _this._handleSwipeMove.bind(_this);
+      _this._handleSwipeEnd = _this._handleSwipeEnd.bind(_this);
+
+      _this._onMouseDown = _this._onMouseDown.bind(_this);
+      _this._onMouseMove = _this._onMouseMove.bind(_this);
+      _this._onMouseUp = _this._onMouseUp.bind(_this);
+      return _this;
+    }
+
+    _createClass(ReactSwipe, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        if (this.swiper) {
+          this.swiper.addEventListener('touchmove', this._handleSwipeMove, getSafeEventHandlerOpts({
+            capture: true,
+            passive: false
+          }));
+        }
+      }
+    }, {
+      key: 'componentWillUnmount',
+      value: function componentWillUnmount() {
+        if (this.swiper) {
+          this.swiper.removeEventListener('touchmove', this._handleSwipeMove, getSafeEventHandlerOpts({
+            capture: true,
+            passive: false
+          }));
+        }
+      }
+    }, {
+      key: '_onMouseDown',
+      value: function _onMouseDown(event) {
+        if (!this.props.allowMouseEvents) {
+          return;
+        }
+
+        this.mouseDown = true;
+
+        document.addEventListener('mouseup', this._onMouseUp);
+        document.addEventListener('mousemove', this._onMouseMove);
+
+        this._handleSwipeStart(event);
+      }
+    }, {
+      key: '_onMouseMove',
+      value: function _onMouseMove(event) {
+        if (!this.mouseDown) {
+          return;
+        }
+
+        this._handleSwipeMove(event);
+      }
+    }, {
+      key: '_onMouseUp',
+      value: function _onMouseUp(event) {
+        this.mouseDown = false;
+
+        document.removeEventListener('mouseup', this._onMouseUp);
+        document.removeEventListener('mousemove', this._onMouseMove);
+
+        this._handleSwipeEnd(event);
+      }
+    }, {
+      key: '_handleSwipeStart',
+      value: function _handleSwipeStart(event) {
+        var _getPosition = getPosition(event),
+            x = _getPosition.x,
+            y = _getPosition.y;
+
+        this.moveStart = { x: x, y: y };
+        this.props.onSwipeStart(event);
+      }
+    }, {
+      key: '_handleSwipeMove',
+      value: function _handleSwipeMove(event) {
+        if (!this.moveStart) {
+          return;
+        }
+
+        var _getPosition2 = getPosition(event),
+            x = _getPosition2.x,
+            y = _getPosition2.y;
+
+        var deltaX = x - this.moveStart.x;
+        var deltaY = y - this.moveStart.y;
+        this.moving = true;
+
+        // handling the responsability of cancelling the scroll to
+        // the component handling the event
+        var shouldPreventDefault = this.props.onSwipeMove({
+          x: deltaX,
+          y: deltaY
+        }, event);
+
+        if (shouldPreventDefault) {
+          event.preventDefault();
+        }
+
+        this.movePosition = { deltaX: deltaX, deltaY: deltaY };
+      }
+    }, {
+      key: '_handleSwipeEnd',
+      value: function _handleSwipeEnd(event) {
+        this.props.onSwipeEnd(event);
+
+        var tolerance = this.props.tolerance;
+
+
+        if (this.moving && this.movePosition) {
+          if (this.movePosition.deltaX < -tolerance) {
+            this.props.onSwipeLeft(1, event);
+          } else if (this.movePosition.deltaX > tolerance) {
+            this.props.onSwipeRight(1, event);
+          }
+          if (this.movePosition.deltaY < -tolerance) {
+            this.props.onSwipeUp(1, event);
+          } else if (this.movePosition.deltaY > tolerance) {
+            this.props.onSwipeDown(1, event);
+          }
+        }
+
+        this.moveStart = null;
+        this.moving = false;
+        this.movePosition = null;
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        var _this2 = this;
+
+        var _props = this.props,
+            tagName = _props.tagName,
+            className = _props.className,
+            style = _props.style,
+            children = _props.children,
+            allowMouseEvents = _props.allowMouseEvents,
+            onSwipeUp = _props.onSwipeUp,
+            onSwipeDown = _props.onSwipeDown,
+            onSwipeLeft = _props.onSwipeLeft,
+            onSwipeRight = _props.onSwipeRight,
+            onSwipeStart = _props.onSwipeStart,
+            onSwipeMove = _props.onSwipeMove,
+            onSwipeEnd = _props.onSwipeEnd,
+            props = _objectWithoutProperties(_props, ['tagName', 'className', 'style', 'children', 'allowMouseEvents', 'onSwipeUp', 'onSwipeDown', 'onSwipeLeft', 'onSwipeRight', 'onSwipeStart', 'onSwipeMove', 'onSwipeEnd']);
+
+        return _react2.default.createElement(
+          this.props.tagName,
+          _extends({
+            ref: function ref(node) {
+              return _this2.swiper = node;
+            },
+            onMouseDown: this._onMouseDown,
+            onTouchStart: this._handleSwipeStart,
+            onTouchEnd: this._handleSwipeEnd,
+            className: className,
+            style: style
+          }, props),
+          children
+        );
+      }
+    }]);
+
+    return ReactSwipe;
+  }(_react.Component);
+
+  ReactSwipe.displayName = 'ReactSwipe';
+  ReactSwipe.propTypes = {
+    tagName: _propTypes2.default.string,
+    className: _propTypes2.default.string,
+    style: _propTypes2.default.object,
+    children: _propTypes2.default.node,
+    allowMouseEvents: _propTypes2.default.bool,
+    onSwipeUp: _propTypes2.default.func,
+    onSwipeDown: _propTypes2.default.func,
+    onSwipeLeft: _propTypes2.default.func,
+    onSwipeRight: _propTypes2.default.func,
+    onSwipeStart: _propTypes2.default.func,
+    onSwipeMove: _propTypes2.default.func,
+    onSwipeEnd: _propTypes2.default.func,
+    tolerance: _propTypes2.default.number.isRequired
+  };
+  ReactSwipe.defaultProps = {
+    tagName: 'div',
+    allowMouseEvents: false,
+    onSwipeUp: function onSwipeUp() {},
+    onSwipeDown: function onSwipeDown() {},
+    onSwipeLeft: function onSwipeLeft() {},
+    onSwipeRight: function onSwipeRight() {},
+    onSwipeStart: function onSwipeStart() {},
+    onSwipeMove: function onSwipeMove() {},
+    onSwipeEnd: function onSwipeEnd() {},
+
+    tolerance: 0
+  };
+  exports.default = ReactSwipe;
+});
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -1929,7 +2337,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(18);
+var	fixUrls = __webpack_require__(19);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2245,7 +2653,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 

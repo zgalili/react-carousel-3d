@@ -1,4 +1,5 @@
 import React from 'react';
+import Swipe from 'react-easy-swipe'
 import PropTypes from 'prop-types';
 import './styles/style.scss';
 
@@ -199,33 +200,35 @@ export class Carousel extends React.Component {
         return (
             <div className="header-main-graphs">
                 <div className="header-graphs-row d-flex flex-nowrap align-items-center h-100">
-                    <div className="react-3d-carousel" style={{ height: this.state.height }}>
-                        {this.state.slides && this.state.slides.length > 0 &&
-                            <div className="slider-container">
-                                <div className="slider-content">
-                                    {this.state.slides.map((slider, index) => {
-                                        return (
-                                            <div className={slider.class} key={index}>
-                                                <div className="slider-left" onClick={this.slideLeft.bind(this)}>
-                                                    <div>
-                                                        <i className="fa fa-arrow-left"></i>
+                    <Swipe onSwipeLeft={() => this.slideRight()} onSwipeRight={() => this.slideLeft()}>
+                        <div className="react-3d-carousel" style={{ height: this.state.height }}>
+                            {this.state.slides && this.state.slides.length > 0 &&
+                                <div className="slider-container">
+                                    <div className="slider-content">
+                                        {this.state.slides.map((slider, index) => {
+                                            return (
+                                                <div className={slider.class} key={index}>
+                                                    <div className="slider-left" onClick={this.slideLeft.bind(this)}>
+                                                        <div>
+                                                            <i className="fa fa-arrow-left"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div className="slider-right" onClick={this.slideRight.bind(this)}>
+                                                        <div >
+                                                            <i className="fa fa-arrow-right"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div className="slider-single-content">
+                                                        {slider.element}
                                                     </div>
                                                 </div>
-                                                <div className="slider-right" onClick={this.slideRight.bind(this)}>
-                                                    <div >
-                                                        <i className="fa fa-arrow-right"></i>
-                                                    </div>
-                                                </div>
-                                                <div className="slider-single-content">
-                                                    {slider.element}
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
+                                            )
+                                        })}
+                                    </div>
                                 </div>
-                            </div>
-                        }
-                    </div>
+                            }
+                        </div>
+                    </Swipe>
                 </div>
                 <ul className="header-graphs-dots d-flex justify-content-center flex-wrap align-items-center">
                     {this.props.slides.map((({ Icon }, index) => (
