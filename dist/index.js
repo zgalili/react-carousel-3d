@@ -2,11 +2,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("react"));
 	else if(typeof define === 'function' && define.amd)
-		define("Carousal", ["React"], factory);
+		define("Carousal", ["react"], factory);
 	else if(typeof exports === 'object')
 		exports["Carousal"] = factory(require("react"));
 	else
-		root["Carousal"] = factory(root["React"]);
+		root["Carousal"] = factory(root["react"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_5__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
